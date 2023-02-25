@@ -1,21 +1,25 @@
-﻿// Задача 64: Задайте значения M и N. Напишите программу, которая выведет все 
-// натуральные числа в промежутке от M до N.
+﻿// Задача 64: Задайте значение N. Напишите программу, которая выведет все натуральные числа в промежутке 
+// от N до 1. Выполнить с помощью рекурсии.
 
-// M = 1; N = 5. -> "1, 2, 3, 4, 5"
-
-// M = 4; N = 8. -> "4, 6, 7, 8"
+// N = 5 -> "5, 4, 3, 2, 1"
+// N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1
 
 Console.Clear();
-Console.Write("Введите M: ");
-int m=int.Parse(Console.ReadLine());
-Console.Write("Введите N: ");
-int n=int.Parse(Console.ReadLine());
+int n = InputNumbers("Введите n: ");
+int count = 2;
+PrintNumber(n, count);
+Console.Write(1);
 
-Console.WriteLine(PrintNumbers(m,n));
-
-string PrintNumbers(int start, int end)
+void PrintNumber(int n, int count)
 {
-    if (start == end) 
-        return start.ToString();
-    return (start + " " + PrintNumbers(start + 1, end));
+  if (count > n) return;
+  PrintNumber(n, count + 1);
+  Console.Write(count + ", ");
+}
+
+int InputNumbers(string input) 
+{
+  Console.Write(input);
+  int output = Convert.ToInt32(Console.ReadLine());
+  return output;
 }
